@@ -29,10 +29,10 @@ useEffect(()=> {
     <section>
       <div>
         {
-          cards? cards.map((card: Cards, index) => {
+          cards.length > 0 ? cards.map((card: Cards, index) => {
             return (
               <div key={ index }>
-                <h1>{card.name}</h1>
+                <h1 className='text-center bg-slate-500'>{card.name}</h1>
                 <img src={card.imageUrl} alt = "cards"/>
               </div>
             )
