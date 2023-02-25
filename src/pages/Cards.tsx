@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { requestCards } from '../Api/request'
-import { Cards } from '../Interface/Cards';
+import { Card } from '../Interface/Cards';
 
 
-function App() {
+function Cards() {
   const [cards, setCards] = useState([])
   console.log('testando aqui', cards);
   
@@ -29,7 +29,7 @@ useEffect(()=> {
     <section>
       <div>
         {
-          cards.length > 0 ? cards.map((card: Cards, index) => {
+          cards.length > 0 ? cards.map((card: Card, index) => {
             return (
               <div key={ index }>
                 <h1 className='text-center bg-slate-500'>{card.name}</h1>
@@ -43,4 +43,4 @@ useEffect(()=> {
   )
 }
 
-export default App
+export default Cards
