@@ -10,7 +10,7 @@ function App() {
     <Provaider>
       <Routes>
         <Route path="/" element={<Welcome/>}/>
-        <Route path="/Cards" element={<Cards/>}/>
+        <Route path="/cards" element={<Cards/>}/>
       </Routes>
     </Provaider>
   );
