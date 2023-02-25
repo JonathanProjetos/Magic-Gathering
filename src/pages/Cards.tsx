@@ -1,39 +1,28 @@
-import React, { useEffect, useState } from 'react'
-import { requestCards } from '../Api/request'
+import React, { useContext } from 'react'
+import Context from '../context/context'
 import { Card } from '../Interface/Cards';
 
 
 function Cards() {
-  const [cards, setCards] = useState([])
-  console.log('testando aqui', cards);
-  
-  const getCards = async () => {
-  try {
-   const data = await requestCards()
-    setCards(data.cards)
-  
-  } catch (error) {
-    console.log(error)
-  }
-}
+  const { getCardByID, cards } = useContext(Context) 
 
-useEffect(()=> {
-  try {
-    getCards()
-  } catch (error) {
-    console.log(error) 
-  }
-}, [])
+  console.log('testando aqui', cards);
 
   return (
     <section>
-      <div>
+      <div className='flex flex-wrap justify-center items-center w-400 h-400 bg-slate-300'>
         {
           cards.length > 0 ? cards.map((card: Card, index) => {
             return (
-              <div key={ index }>
-                <h1 className='text-center bg-slate-500'>{card.name}</h1>
-                <img src={card.imageUrl} alt = "cards"/>
+              <div className={`grid grid-cols-${index} m-4  bg-slate-300`} key={ index }
+              >
+                <h1 className='text-center'>{card.name}</h1>
+                <img 
+                  id={card.id}
+                  className=' bg-slate-300 rounded-lg' 
+                  onClick={({ target }) => getCardByID(target.id)}
+                  src={card.imageUrl} 
+                  alt = "cards"/>
               </div>
             )
           }) : <h1>Carregando...</h1>
