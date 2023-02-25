@@ -7,7 +7,7 @@ describe('Page Welcome', ()=> {
   it('Page Welcome', () => {
     renderWithRouter(<App />, ['/'])
   
-    const title = screen.getByRole('heading', { name: /Hello/i })
+    const title = screen.getByRole('heading', { name: /Bem vindo ao catálogo de cards de Magic Gathering V1!/i })
     expect(title).toBeInTheDocument()
   })
 })
