@@ -1,5 +1,6 @@
 import { createContext } from 'react';
+import { PropsContext } from '../Interface/PropsContext';
 
-const Context = createContext({});
+const Context = createContext({} as PropsContext);
 
 export default Context;
