@@ -9,4 +9,9 @@ export const requestCards = async (): Promise<any> => {
     return data as unknown as [];
 };
 
+export const requestCardByID = async (id:String): Promise<any> => {
+  const { data } = await api.get(`/${id}`);
+  return data as unknown as {};
+};
+
 export default api;
