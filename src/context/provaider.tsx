@@ -1,8 +1,9 @@
 import React, { useMemo, useEffect, useState } from 'react'
 import Context from './context'
 import PropTypes from 'prop-types';
-import { requestCardByID, requestCards } from '../Api/request'
-import { Card } from '../Interface/Cards';
+import { requestCards } from '../Api/request'
+import { Cards } from '../Interface/Cards';
+import { Card } from '../Interface/Card';
 
 type Props = {
   children: React.ReactNode;
@@ -11,11 +12,12 @@ type Props = {
 function Provaider({ children }: Props) {
   const [inputName, setInputName] = useState('')
   const [cards, setCards] = useState([])
-
-  const getAllCards = async () => {
+  const [cardById, setCardById ] = useState<Record<string, Cards>>({})
+  
+  const getAllCards = async (): Promise<void> => {
     try {
       const data = await requestCards()
-      const dataFilterCards = data?.cards.filter((card: Card) => card.imageUrl !== undefined)
+      const dataFilterCards = data && data.cards.filter((card: Cards) => card.imageUrl !== undefined)
       setCards(dataFilterCards)
     
     } catch (error) {
@@ -23,13 +25,11 @@ function Provaider({ children }: Props) {
     }
   }
 
-  const getCardByID = async (id: string) => {
-    try {
-      const data = await requestCardByID(id)
-      console.log(data)
-    } catch (error) {
-      console.log(error)
-    }
+  const getCardByID = (): void => {
+    const id = localStorage.getItem('idCard') || []
+    const data = cards && cards.find((card: Card) => card.multiverseid === id )
+    console.log("data", data);
+    setCardById(data as any)
   }
 
   useEffect(()=> {
@@ -39,12 +39,15 @@ function Provaider({ children }: Props) {
   const data = useMemo(() => ({
     inputName,
     setInputName,
-    getCardByID,
     cards,
+    cardById,
+    getCardByID
   }), [
     inputName, 
     setInputName,
     cards,
+    cardById,
+    getCardByID
   ])
 
   return (
