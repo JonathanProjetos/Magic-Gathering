@@ -2,10 +2,11 @@ import React, { useContext } from 'react'
 import Context from '../context/context'
 import { Card } from '../Interface/Card';
 import { useNavigate } from 'react-router-dom';
+import InputSearchCard from '../Components/InputSeachCard';
 
 
 function Cards() {
-  const { cards, getCardByID } = useContext(Context) 
+  const { dataCards, getCardByID } = useContext(Context) 
   const navigate = useNavigate()
   // console.log('testando aqui', cards);
 
@@ -14,14 +15,16 @@ function Cards() {
       localStorage.setItem('idCard', id)
     }
     getCardByID()
-    navigate(`/detail-card/${id}`)
+    navigate(`/detail-card/${id}`, { replace: true })
   }
 
   return (
-    <section>
+    <section className='h-screen bg-slate-300'>
+      <h1 className='text-center text-6xl'>Catalogo de Cards</h1>
+      <InputSearchCard />
       <div className='flex flex-wrap justify-center items-center w-400 h-400 bg-slate-300'>
         {
-          cards.length > 0 ? cards.map((card: Card, index) => {
+          dataCards.length > 0 ? dataCards.map((card: Card, index) => {
             return (
               <div className={`grid grid-cols-${index} m-4  bg-slate-300`} key={ index }
               >
