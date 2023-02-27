@@ -1,12 +1,21 @@
 import React, { useContext } from 'react'
 import Context from '../context/context'
-import { Card } from '../Interface/Cards';
+import { Card } from '../Interface/Card';
+import { useNavigate } from 'react-router-dom';
 
 
 function Cards() {
-  const { getCardByID, cards } = useContext(Context) 
+  const { cards, getCardByID } = useContext(Context) 
+  const navigate = useNavigate()
+  // console.log('testando aqui', cards);
 
-  console.log('testando aqui', cards);
+  const redirectDatailCard = (id: string) => {
+    if(id.length > 0){
+      localStorage.setItem('idCard', id)
+    }
+    getCardByID()
+    navigate(`/detail-card/${id}`)
+  }
 
   return (
     <section>
@@ -18,10 +27,10 @@ function Cards() {
               >
                 <h1 className='text-center'>{card.name}</h1>
                 <img 
-                  id={card.id}
+                  id={ card.multiverseid }
                   className=' bg-slate-300 rounded-lg' 
-                  onClick={({ target }) => getCardByID(target.id)}
-                  src={card.imageUrl} 
+                  onClick={({ target }:any) => redirectDatailCard(target.id) }
+                  src={ card.imageUrl } 
                   alt = "cards"/>
               </div>
             )
