@@ -5,7 +5,8 @@ export interface PropsContext {
   inputName: string;
   setInputName: React.Dispatch<React.SetStateAction<string>>;
   getCardByID: () => void ;
-  cards: Cards[];
+  dataCards: Cards[];
   cardById: Card
-
+  setInputSearch: React.Dispatch<React.SetStateAction<string>>;
+  inputSearch: string;
 }
