@@ -1,5 +1,5 @@
-export interface Card {
+export interface Cards {
   name: string
   imageUrl: string
-  id: string
+  multiverseid: string
 }
