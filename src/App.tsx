@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome/>}/>
         <Route path="/cards" element={<Cards/>}/>
-        <Route path="/card/:id" element={<DetailCard/>}/>
+        <Route path="/detail-card/:id" element={<DetailCard/>}/>
       </Routes>
     </Provaider>
   );
