@@ -1,8 +1,11 @@
-import { Card } from "../Interface/Cards";
+import { Cards } from "../Interface/Cards";
+import { Card } from "../Interface/Card";
 
 export interface PropsContext {
   inputName: string;
   setInputName: React.Dispatch<React.SetStateAction<string>>;
-  getCardByID: (id: string) => Promise<void>;
-  cards: Card[];
+  getCardByID: () => void ;
+  cards: Cards[];
+  cardById: Card
+
 }
