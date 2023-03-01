@@ -26,8 +26,8 @@ describe('Page Welcome', ()=> {
   it('Disabled quando input name tem a quantidade de caracters menor 5', () => {
     renderWithRouter(<App />, ['/'])
 
-    const button = screen.getByRole('button', { name: /Entrar/i })
-    expect(button).toBeDisabled()
+    const BUTTON = screen.getByRole('button', { name: /Entrar/i })
+    expect(BUTTON).toBeDisabled()
   })
 
   it('Botão de redirecionamento para a página de cards', async () => {
@@ -36,12 +36,13 @@ describe('Page Welcome', ()=> {
     const INPUT = screen.getByRole('textbox')
     await userEvent.type(INPUT, 'teste')
     
-    const button = screen.getByRole('button', { name: /Entrar/i })
-    userEvent.click(button)
-    expect(button).toBeInTheDocument()
-    expect(button).toBeEnabled()
-    
-  })
+    const BUTTON = screen.getByRole('button', { name: /Entrar/i })
+    userEvent.click(BUTTON)
+    expect(BUTTON).toBeInTheDocument()
+    expect(BUTTON).toBeEnabled()
 
+    const TITLECARD = await screen.findByRole('heading', { level: 1, name: /Catálogo de/i })
+    expect(TITLECARD).toBeInTheDocument()
+  })
 
 })

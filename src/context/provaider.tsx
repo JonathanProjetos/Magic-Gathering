@@ -20,10 +20,10 @@ function Provaider({ children }: Props) {
   const getAllCards = async (): Promise<void> => {
     try {
       const data = await requestCards()
-      const dataFilterCards = data && data.cards.filter((card: Cards) => card.imageUrl !== undefined)
-      console.log("dataFilterCards", dataFilterCards);
+      const dataFilterCards = data && data
+        .filter((card: Cards) => card.imageUrl !== undefined)
+
       setCards(dataFilterCards)
-    
     } catch (error) {
       console.log(error)
     }
@@ -32,12 +32,14 @@ function Provaider({ children }: Props) {
   const getCardByID = (): void => {
     const id = localStorage.getItem('idCard') || []
     const data = cards && cards.find((card: Card) => card.multiverseid === id )
-    console.log("data", data);
     setCardById(data as any)
   }
 
   const filteCardsBySearch = (): void => {
-    const filterCards = cards && cards.filter((card: Cards) => card.name.toLowerCase().includes(inputSearch.toLowerCase()))
+    const filterCards = cards && cards
+      .filter((card: Cards) => card.name
+      .toLowerCase().includes(inputSearch.toLowerCase()))
+
     setDataCards(filterCards)
   }
   
