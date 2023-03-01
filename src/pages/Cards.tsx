@@ -20,11 +20,11 @@ function Cards() {
 
   return (
     <section className='h-screen bg-slate-300'>
-      <h1 className='text-center text-6xl'>Catalogo de Cards</h1>
+      <h1 className='text-center text-6xl'>Catálogo de Cards</h1>
       <InputSearchCard />
       <div className='flex flex-wrap justify-center items-center w-400 h-400 bg-slate-300'>
         {
-          dataCards.length > 0 ? dataCards.map((card: Card, index) => {
+          dataCards && dataCards.map((card: Card, index) => {
             return (
               <div className={`grid grid-cols-${index} m-4  bg-slate-300`} key={ index }
               >
@@ -37,7 +37,7 @@ function Cards() {
                   alt = "cards"/>
               </div>
             )
-          }) : <h1>Carregando.....</h1>
+          })
         }
       </div>
     </section>
