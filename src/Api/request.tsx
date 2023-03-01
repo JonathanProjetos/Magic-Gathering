@@ -7,7 +7,7 @@ const api = axios.create({
 
 export const requestCards = async (): Promise<any> => {
     const { data } = await api.get('/');
-    return data as unknown as [];
+    return data.cards as unknown as [];
 };
 
 export const requestCardByID = async (id:String): Promise<any> => {
