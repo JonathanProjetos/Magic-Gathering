@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import Context from '../context/context'
+import SkipButton from './SkipButton'
 
 function DetailCard() {
   const { cardById } = useContext(Context)
@@ -30,6 +31,7 @@ function DetailCard() {
         </div>
       </div>
       }
+      <SkipButton path='/cards' />
     </section>
   )
 }
