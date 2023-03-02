@@ -9,7 +9,11 @@ function button() {
   return (
     <div>
       <button
-        className='px-6 py-2 text-white bg-red-300 rounded focus:outline-none" disabled'
+        className='px-6 py-2 rounded focus:outline-none" disabled'
+        style={{
+          backgroundColor: inputName.length >= 5 ? 'black' : '#D9D9D9',
+          color: inputName.length >= 5 ? 'white' : 'black',
+        }}
         type="button"
         data-testid="button"
         disabled={inputName.length < 5 }
