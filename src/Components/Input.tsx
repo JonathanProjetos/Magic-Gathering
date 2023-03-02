@@ -12,6 +12,13 @@ function input() {
     <div className='m-5'>
       <input
         className='text-center'
+        style={{
+          width: '15vw',
+          height: '4vh',
+          backgroundColor: 'transparent',
+          border: 'none',
+          borderBottom: '1px solid black',
+        }}
         type="text"
         value={inputName}
         onChange={handleChange}
