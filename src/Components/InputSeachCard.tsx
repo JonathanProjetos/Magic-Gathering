@@ -11,7 +11,7 @@ function InputSeachCard() {
   return (
     <div className='flex flex-row justify-center items-center text-center'>
         <input
-          className='text-center my-5'
+          className='text-center my-5 border-b-2 border-black outline-none'
           type="text"
           value={ inputSearch }
           onChange={ handleChange }
