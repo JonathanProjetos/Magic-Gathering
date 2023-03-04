@@ -10,6 +10,7 @@ function SkipButton({ path }: SkipButtonProps) {
     <div> 
       <button
         type='button'
+        className='text-white bg-black px-6 py-2 rounded'
         onClick={() => navigate(path)}
       >
         VOLTAR
