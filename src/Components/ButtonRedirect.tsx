@@ -6,6 +6,13 @@ function button() {
   const { inputName } = useContext(Context)
   const navigate = useNavigate();
 
+  const redirectButton = () => {
+    if(inputName.length > 0){
+      localStorage.setItem('name', inputName)
+    }
+    navigate('/cards', { replace: true })
+  }
+
   return (
     <div>
       <button
@@ -17,7 +24,7 @@ function button() {
         type="button"
         data-testid="button"
         disabled={inputName.length < 5 }
-        onClick={() => navigate('/cards')}
+        onClick={() => redirectButton()}
       >
           ENTRAR
       </button>
