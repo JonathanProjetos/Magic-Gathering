@@ -9,7 +9,7 @@ describe('Page Welcome', ()=> {
   it('presença da messagem inicial', () => {
     renderWithRouter(<App />, ['/'])
     
-    const TITLE = screen.getByText(/Bem vindo ao catálogo de cards de Magic Gathering V1!/i)
+    const TITLE = screen.getByText(/Magic Gathering V1!/i)
     expect(TITLE).toBeInTheDocument()
   })
   

@@ -16,7 +16,7 @@ function Provaider({ children }: Props) {
   const [dataCards, setDataCards] = useState([])
   const [cardById, setCardById ] = useState<Record<string, Cards>>({})
   
-
+  //Fetch de todas as cartas é filtro as cartas que não tem imagem
   const getAllCards = async (): Promise<void> => {
     try {
       const data = await requestCards()
@@ -29,12 +29,15 @@ function Provaider({ children }: Props) {
     }
   }
   
+  //Pega o id da carta e filtra a carta pelo id
   const getCardByID = (): void => {
     const id = localStorage.getItem('idCard') || []
     const data = cards && cards.find((card: Card) => card.multiverseid === id )
+    localStorage.setItem('card', JSON.stringify(data))
     setCardById(data as any)
   }
 
+  //Filtro de cards por nome
   const filteCardsBySearch = (): void => {
     const filterCards = cards && cards
       .filter((card: Cards) => card.name
