@@ -11,12 +11,10 @@ function input() {
   return (
     <div className='m-5'>
       <input
-        className='text-center'
+        className='text-center outline-none'
         style={{
           width: '15vw',
           height: '4vh',
-          backgroundColor: 'transparent',
-          border: 'none',
           borderBottom: '1px solid black',
         }}
         type="text"
