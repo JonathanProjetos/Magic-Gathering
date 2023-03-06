@@ -12,7 +12,6 @@ export const requestCards = async (): Promise<any> => {
 
 export const requestCardByID = async (id:String): Promise<any> => {
   const { data } = await api.get(`/${id}`);
-  console.log();
   
   return data as unknown as {};
 };
