@@ -1,5 +1,4 @@
 import React from 'react'
-import Context from '../context/context'
 import Header from './Header'
 import SkipButton from './SkipButton'
 
