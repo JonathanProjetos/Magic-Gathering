@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import icon from '../assets/icons/index'
 
 function SingOut() {
-
   const navigate = useNavigate()
 
   const clearLocalStorage = () => {
@@ -13,20 +12,9 @@ function SingOut() {
   }
 
   return (
-    <div
-      className='mr-10'
-    >
-      <button
-        type='button'
-        onClick={() => clearLocalStorage()}
-      >
-        {
-          <img 
-            src={icon[0].logo} 
-            alt='sair'
-            className='w-10 h-10' 
-          />
-        }
+    <div className='mr-10'>
+      <button type='button' onClick={() => clearLocalStorage()}>
+        <img src={icon[0].logo} alt='sair' className='w-10 h-10' />
       </button>
     </div>
   )

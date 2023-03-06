@@ -1,15 +1,15 @@
-import home from '../assets/kindpng.png'
-import card from '../assets/symbol.jpg'
+import home from './kindpng.png'
+import card from './symbol.jpg'
 
 const images = [
   {
     id: 0,
-    logo: home
+    logo: home,
   },
   {
     id: 1,
-    logo: card
-  }
+    logo: card,
+  },
 ]
 
 export default images
