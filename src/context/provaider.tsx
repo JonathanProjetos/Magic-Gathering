@@ -2,7 +2,7 @@ import React, { useMemo, useEffect, useState } from 'react'
 import Context from './context'
 import PropTypes from 'prop-types'
 import { requestCards } from '../Api/request'
-import { Cards } from '../Interface/Cards'
+// import { Cards } from '../Interface/Cards'
 import { Card } from '../Interface/Card'
 
 type Props = {
@@ -12,15 +12,15 @@ type Props = {
 function Provaider({ children }: Props) {
   const [inputName, setInputName] = useState('')
   const [inputSearch, setInputSearch] = useState('')
-  const [cards, setCards] = useState([])
-  const [dataCards, setDataCards] = useState([])
+  const [cards, setCards] = useState<Card[]>([])
+  const [dataCards, setDataCards] = useState<Card[]>([])
 
   //Fetch de todas as cartas é filtro as cartas que não tem imagem
   const getAllCards = async (): Promise<void> => {
     try {
       const data = await requestCards()
       const dataFilterCards =
-        data && data.filter((card: Cards) => card.imageUrl !== undefined)
+        data && data.filter((card: Card) => card.imageUrl !== undefined)
 
       setCards(dataFilterCards)
     } catch (error) {
@@ -39,7 +39,7 @@ function Provaider({ children }: Props) {
   const filteCardsBySearch = (): void => {
     const filterCards =
       cards &&
-      cards.filter((card: Cards) =>
+      cards.filter((card: Card) =>
         card.name.toLowerCase().includes(inputSearch.toLowerCase())
       )
 
