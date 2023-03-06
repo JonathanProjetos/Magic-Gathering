@@ -1,6 +1,6 @@
-import { createContext } from 'react';
-import { PropsContext } from '../Interface/PropsContext';
+import { createContext } from 'react'
+import { PropsContext } from '../Interface/PropsContext'
 
-const Context = createContext({} as PropsContext);
+const Context = createContext({} as PropsContext)
 
-export default Context;
+export default Context

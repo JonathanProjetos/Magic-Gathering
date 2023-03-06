@@ -1,42 +1,43 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
+import { Card } from '../Interface/Card'
 
-function usePagination(data:any, itemsPerPage:number) {
+function usePagination(data: Card[], itemsPerPage: number) {
   // Inicia o estado "currentPage" com o valor inicial 1
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1)
   // Inicia o estado "totalPages" com o valor inicial 1
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState(1)
   // Inicia o estado "currentData" com um array vazio
-  const [currentData, setCurrentData] = useState([]);
+  const [currentData, setCurrentData] = useState<Card[]>([])
 
   // Executa um efeito sempre que as dependências (data, itemsPerPage, currentPage) mudarem
   useEffect(() => {
     // Verifica se a propriedade "data" foi fornecida
     if (data) {
       // Calcula o número total de páginas com base no número de itens por página
-      const totalPages = Math.ceil(data.length / itemsPerPage);
+      const totalPages = Math.ceil(data.length / itemsPerPage)
       // Atualiza o estado "totalPages" com o número total de páginas calculado
-      setTotalPages(totalPages);
+      setTotalPages(totalPages)
       // Calcula a fatia de dados que deve ser exibida na página atual
-      const startIndex = (currentPage - 1) * itemsPerPage;
-      const endIndex = currentPage * itemsPerPage;
+      const startIndex = (currentPage - 1) * itemsPerPage
+      const endIndex = currentPage * itemsPerPage
       // Atualiza o estado "currentData" com os dados da página atual
-      setCurrentData(data.slice(startIndex, endIndex));
+      setCurrentData(data.slice(startIndex, endIndex))
     }
-  }, [data, itemsPerPage, currentPage]);
+  }, [data, itemsPerPage, currentPage])
 
   // Função para ir para uma página específica
-  function goToPage(page:number) {
-    setCurrentPage(page);
+  function goToPage(page: number) {
+    setCurrentPage(page)
   }
 
   // Função para ir para a próxima página
   function goToNextPage() {
-    setCurrentPage((currentPage) => Math.min(currentPage + 1, totalPages));
+    setCurrentPage((currentPage) => Math.min(currentPage + 1, totalPages))
   }
 
   // Função para ir para a página anterior
   function goToPreviousPage() {
-    setCurrentPage((currentPage) => Math.max(currentPage - 1, 1));
+    setCurrentPage((currentPage) => Math.max(currentPage - 1, 1))
   }
 
   return {
@@ -46,7 +47,7 @@ function usePagination(data:any, itemsPerPage:number) {
     goToPage,
     goToNextPage,
     goToPreviousPage,
-  };
+  }
 }
 
-export default usePagination;
+export default usePagination

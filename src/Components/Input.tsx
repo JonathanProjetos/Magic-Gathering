@@ -17,11 +17,11 @@ function input() {
           height: '4vh',
           borderBottom: '1px solid black',
         }}
-        type="text"
+        type='text'
         value={inputName}
         onChange={handleChange}
-        placeholder="Digite seu nome"
-        data-testid="input"
+        placeholder='Digite seu nome'
+        data-testid='input'
       />
     </div>
   )

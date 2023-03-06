@@ -1,10 +1,10 @@
-import sair from '../icons/sair.png';
+import sair from './sair.png'
 
 const imageIcons = [
   {
     id: 0,
-    logo: sair
-  }
+    logo: sair,
+  },
 ]
 
 export default imageIcons
